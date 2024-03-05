@@ -1,0 +1,57 @@
+@startuml
+
+entity Usuario {
+    + id
+    --
+    nombre
+}
+
+entity Autor {
+    + id
+    --
+    nombre
+}
+
+entity Categoria {
+    + id
+    --
+    nombre
+}
+
+entity Libro {
+    + id
+    --
+    nombre
+    autor_id
+}
+
+entity libro_categoria{
+    +id
+    --
+    libro_id
+    categoria_id
+}
+
+entity Resena {
+    + id
+    --
+    usuario_id
+    libro_id
+    contenido
+}
+
+entity Reserva {
+    + id
+    --
+    usuario_id
+    libro_id
+}
+
+Usuario "1" -- "n" Reserva : realiza
+Libro "1" -- "1" Reserva : es_reservado_por
+Usuario "1" -- "n" Resena : deja
+Libro "1" -- "n" Resena : tiene
+Autor "1" -- "n" Libro : ha_escrito
+Libro "1" -- "n" Categoria : pertenece_a
+
+@enduml
